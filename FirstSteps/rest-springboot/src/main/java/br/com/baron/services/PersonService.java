@@ -40,7 +40,6 @@ public class PersonService {
 		return persons;
 	}
 	public Person create(Person person) {
-
 		logger.info("Creating a person");
 		return person;
 	}
@@ -48,6 +47,10 @@ public class PersonService {
 	public Person update(Person person) {
 		logger.info("Updating a person");
 		return person;
+	}
+
+	public void delete(Long id) {
+		logger.info("Deleting a person");
 	}
 
 	private Person mockPerson(int i) {

@@ -33,5 +33,14 @@ public class PersonController {
 	public Person create(@RequestBody Person person) {
 		return service.create(person);
 	}
+
+	@RequestMapping(method=RequestMethod.PUT)
+	public Person update(@RequestBody Person person) {
+		return service.update(person);
+	}
+	@RequestMapping(value="/{id}", method=RequestMethod.DELETE)
+	public void delete(@PathVariable(value="id") Long id) {
+		service.delete(id);
+	}
 }
 
