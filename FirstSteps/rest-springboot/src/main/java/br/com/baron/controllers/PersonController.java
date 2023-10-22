@@ -1,11 +1,10 @@
 package br.com.baron.controllers;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import br.com.baron.services.PersonService;
-import model.Person;
+import br.com.baron.model.Person;
 
 import java.util.List;
 
@@ -19,28 +18,29 @@ public class PersonController {
 		this.service = service;
 	}
 
-	@RequestMapping(value = "/{id}", method=RequestMethod.GET)
-	public Person findById(@PathVariable(value="id") String id) {
+	@GetMapping("/{id}")
+	public Person findById(@PathVariable(value="id") Long id) {
 		return service.findById(id);
 	}
 
-	@RequestMapping(method=RequestMethod.GET)
+	@GetMapping
 	public List<Person> findAll() {
 		return service.findAll();
 	}
 
-	@RequestMapping(method=RequestMethod.POST)
+	@PostMapping
 	public Person create(@RequestBody Person person) {
 		return service.create(person);
 	}
 
-	@RequestMapping(method=RequestMethod.PUT)
+	@PutMapping
 	public Person update(@RequestBody Person person) {
 		return service.update(person);
 	}
-	@RequestMapping(value="/{id}", method=RequestMethod.DELETE)
-	public void delete(@PathVariable(value="id") Long id) {
+	@DeleteMapping("/{id}")
+	public ResponseEntity<?> delete(@PathVariable(value="id") Long id) {
 		service.delete(id);
+		return ResponseEntity.noContent().build();
 	}
 }
 
