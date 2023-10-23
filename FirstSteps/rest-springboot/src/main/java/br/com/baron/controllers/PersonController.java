@@ -1,10 +1,10 @@
 package br.com.baron.controllers;
 
+import br.com.baron.dto.PersonDto;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import br.com.baron.services.PersonService;
-import br.com.baron.model.Person;
 
 import java.util.List;
 
@@ -19,22 +19,22 @@ public class PersonController {
 	}
 
 	@GetMapping("/{id}")
-	public Person findById(@PathVariable(value="id") Long id) {
+	public PersonDto findById(@PathVariable(value="id") Long id) {
 		return service.findById(id);
 	}
 
 	@GetMapping
-	public List<Person> findAll() {
+	public List<PersonDto> findAll() {
 		return service.findAll();
 	}
 
 	@PostMapping
-	public Person create(@RequestBody Person person) {
+	public PersonDto create(@RequestBody PersonDto personDto) {
 		return service.create(person);
 	}
 
 	@PutMapping
-	public Person update(@RequestBody Person person) {
+	public PersonDto update(@RequestBody PersonDto personDto) {
 		return service.update(person);
 	}
 	@DeleteMapping("/{id}")

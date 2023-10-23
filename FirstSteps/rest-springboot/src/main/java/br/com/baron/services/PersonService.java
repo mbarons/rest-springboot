@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.concurrent.atomic.AtomicLong;
 import java.util.logging.Logger;
 
+import br.com.baron.dto.PersonDto;
 import br.com.baron.exceptions.ResourceNotFoundException;
 import br.com.baron.repositories.PersonRepository;
 import org.springframework.stereotype.Service;
@@ -21,18 +22,18 @@ public class PersonService {
 		this.repository = repository;
 	}
 
-	public Person findById(Long id) {
+	public PersonDto findById(Long id) {
 		
 		logger.info("Looking for a person");
 		return repository.findById(id).orElseThrow(() -> new ResourceNotFoundException("User not found."));
 	}
 	
-	public List<Person> findAll() {
+	public List<PersonDto> findAll() {
 		logger.info("Looking for all the people");
 		return repository.findAll();
 	}
 
-	public Person create(Person person) {
+	public PersonDto create(PersonDto personDto) {
 		logger.info("Creating a person");
 		return repository.save(person);
 	}
