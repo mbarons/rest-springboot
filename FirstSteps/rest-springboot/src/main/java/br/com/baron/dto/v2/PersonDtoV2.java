@@ -1,10 +1,11 @@
-package br.com.baron.dto;
+package br.com.baron.dto.v2;
 
 import java.io.Serial;
 import java.io.Serializable;
+import java.util.Date;
 import java.util.Objects;
 
-public class PersonDto implements Serializable {
+public class PersonDtoV2 implements Serializable {
 
     @Serial
     private static final long serialVersionUID = 1;
@@ -14,8 +15,9 @@ public class PersonDto implements Serializable {
     private String lastName;
     private String address;
     private String gender;
+    private Date birthday;
 
-    public PersonDto() {
+    public PersonDtoV2() {
     }
 
     public Long getId() {
@@ -58,11 +60,19 @@ public class PersonDto implements Serializable {
         this.gender = gender;
     }
 
+    public Date getBirthday() {
+        return birthday;
+    }
+
+    public void setBirthday(Date birthday) {
+        this.birthday = birthday;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        PersonDto personDto = (PersonDto) o;
+        PersonDtoV2 personDto = (PersonDtoV2) o;
         return Objects.equals(id, personDto.id) && Objects.equals(firstName, personDto.firstName) && Objects.equals(lastName, personDto.lastName) && Objects.equals(address, personDto.address) && Objects.equals(gender, personDto.gender);
     }
 
